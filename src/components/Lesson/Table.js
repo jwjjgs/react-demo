@@ -1,7 +1,7 @@
-import React from "react";
-import "./Table.css";
-import Point from "./Point";
-import { data } from "../../config/lesson";
+import React from "react"
+import "./Table.css"
+import Point from "./Point"
+import { data, weekStr, pointColor } from "../../config/lesson"
 
 export default (props) => {
   const { x, y } = props;
@@ -22,10 +22,6 @@ export default (props) => {
     height: (p3.y - p2.y) / 12,
     width: (p3.x - base) / 7,
   };
-  const pointColor = [
-    "#f50",
-    "#2db7f5","#87d068","#108ee9"
-  ];
   return (
     <div
       style={{
@@ -47,7 +43,7 @@ export default (props) => {
       >
         <div style={{ width: base }}>#</div>
         {/* 星期 */}
-        {["一", "二", "三", "四", "五", "六", "天"].map((item, key) => (
+        {weekStr.map((item, key) => (
           <div key={key} style={{ width: point.width }}>
             {item}
           </div>
@@ -63,13 +59,13 @@ export default (props) => {
         }}
       >
         {/* 节点 */}
-        <div style={{ height: point.height * 1 }}>
+        <div style={{ height: point.height * 1  }}>
           <span>早</span>
         </div>
-        <div style={{ height: point.height * 4 }}>
+        <div style={{ height: point.height * 4  }}>
           <span>上</span>
         </div>
-        <div style={{ height: point.height * 4 }}>
+        <div style={{ height: point.height * 4  }}>
           <span>下</span>
         </div>
         <div style={{ height: point.height * 3 }}>
@@ -84,18 +80,23 @@ export default (props) => {
           height: p3.y - p2.y,
           width: p3.x - p2.x,
         }}
+
       >
         {/* 课 */}
-        {data.map((item, key) => {
-          return (
-            <Point
-              {...item}
-              key={key}
-              point={point}
-              pointColor={pointColor[key % pointColor.length]}
-            />
-          );
-        })}
+        {
+          Object.keys(data).map((key, i) => {
+            return data[key].map((item, k) => {
+              return (
+                <Point
+                  {...item}
+                  key={key + k}
+                  point={point}
+                  pointColor={pointColor[i]}
+                />
+              )
+            })
+          })
+        }
       </div>
     </div>
   );

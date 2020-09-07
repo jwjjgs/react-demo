@@ -12,6 +12,7 @@
   text-align: center;
   display: flex;
   align-items: center;
+  border-top: 2px solid #fff;
 }
 .lesson-n span {
   display: block;
