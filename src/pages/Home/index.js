@@ -1,4 +1,5 @@
 import React from "react";
+<<<<<<< HEAD
 import Header from "../../components/common/Header";
 
 import { Card, Row, Col, Statistic, Divider, Button } from "antd";
@@ -25,5 +26,18 @@ export default () => {
         </Col>
       </Row>
     </>
+=======
+import { Typography, Space } from "antd";
+
+const { Text, Link } = Typography;
+
+export default () => {
+  return (
+    <Space direction="horizontal" align="center">
+      <Text>Ant Design (default)</Text>
+      <Text type="secondary">Ant Design (secondary)</Text>
+      
+    </Space>
+>>>>>>> 7f8c6f2de380d133f70f2479a45e9152a42d7d45
   );
 };
