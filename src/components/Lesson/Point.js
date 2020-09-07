@@ -1,10 +1,6 @@
 import React from "react";
 import "./Point.css";
-<<<<<<< HEAD
 import { Typography, Popover, Space } from "antd";
-=======
-import { Typography, Popover, message, Button, Space } from "antd";
->>>>>>> 7f8c6f2de380d133f70f2479a45e9152a42d7d45
 import Text from "antd/lib/typography/Text";
 
 const { Paragraph } = Typography;
