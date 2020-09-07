@@ -1,0 +1,27 @@
+.lesson {
+  position: absolute;
+}
+.lesson-w div {
+  background-color: #eee;
+  float: left;
+
+  text-align: center;
+}
+.lesson-n div {
+  background-color: #eee;
+  text-align: center;
+  display: flex;
+  align-items: center;
+}
+.lesson-n span {
+  display: block;
+  width: 100%;
+  text-align: center;
+}
+
+.lesson-c span {
+  display: block;
+  width: 100%;
+  text-align: center;
+}
+
