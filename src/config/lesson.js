@@ -33,7 +33,7 @@ const data = {
     { week: 5, node: 7, len: 2, name: "高考志愿", tname: "", addr: "106", mark: "", },
   ],
   "形策": [
-    { week: 7, node: 7, len: 2, name: "形策", tname: "", addr: "211", mark: "" },
+    { week: 6, node: 7, len: 2, name: "形策", tname: "", addr: "211", mark: "" },
   ],
 }
 const weekStr = ["一", "二", "三", "四", "五", "六", "天"];
