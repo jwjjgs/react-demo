@@ -9,9 +9,10 @@ import Table from "../../components/Lesson/Table";
 export default () => {
   return (
     <Layout style={{ background: "#fff" }}>
-      <Header title="首页" isIndex={true} />
-      <Content>
+      <Header title="首页" isIndex={true}>
         <Weather />
+      </Header>
+      <Content>
         <Timer />
         <Table />
       </Content>

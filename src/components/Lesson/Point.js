@@ -1,7 +1,7 @@
 import React from "react";
 import "./Point.css";
 import { Typography, Tooltip, Space, Divider } from "antd";
-import { weekStr } from "../../config/lesson";
+import { weekStr } from "../../config";
 
 const { Paragraph, Text } = Typography;
 
@@ -54,7 +54,7 @@ export default (props) => {
         style={{
           height: height * len - 4,
           top: node * height,
-          left: (week - 1) * width,
+          left: week * width,
           width: width - 2,
           background: `${pointColor}`,
         }}

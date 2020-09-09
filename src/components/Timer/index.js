@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import moment from "moment";
 import { Card, Statistic, Divider } from "antd";
+import { weekStr } from '../../config'
 export default () => {
   const [nowMoment, setMoment] = useState(getMomet());
   useEffect(() => {
@@ -25,7 +26,7 @@ export default () => {
   return (
     <>
       <Card>
-        <Statistic title={"星期"} value={moment().weekday()} />
+        <Statistic title={`星期${weekStr[moment().weekday()]}`} value={""} />
         <Divider orientation="left" plain>
           陪你走过漫长岁月
         </Divider>

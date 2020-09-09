@@ -1,13 +1,23 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Table.css";
 import Point from "./Point";
-import { data, weekStr, pointColor } from "../../config/lesson";
+import { data, pointColor } from "../../config/lesson";
+import { weekStr } from "../../config";
 import { Layout, Row, Col } from "antd";
 
 export default () => {
+  // const { innerHeight, setInnerHeight } = useState(window.innerHeight);
+  // const { innerWidth, setInnerWidth } = useState(window.innerWidth);
+
+  // window.addEventListener("resize", () => { handleResize() });
+  // function handleResize() {
+  //   setInnerHeight(window.innerHeight)
+  //   setInnerWidth(window.innerWidth)
+  // }
+  const { innerHeight, innerWidth } = window;
   const base = 32;
-  const height = (window.innerHeight - base) / 12;
-  const width = (window.innerWidth - 24 - base) / 7;
+  const height = (innerHeight - base) / 12;
+  const width = (innerWidth - 24 - base) / 7;
   return (
     <>
       <Layout className="lesson">

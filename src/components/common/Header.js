@@ -14,7 +14,9 @@ export default (props) => {
         title={title || ""}
         subTitle={subTitle || ""}
         extra={extra || []}
-      />
+      >
+        {props.children}
+      </PageHeader>
     </>
   );
 };
