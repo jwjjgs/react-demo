@@ -6,7 +6,18 @@ import { weekStr } from "../../config/lesson";
 const { Paragraph, Text } = Typography;
 
 export default (props) => {
-  const { point, week, node, len, name, tname, addr, mark, pointColor } = props; //week星期几 node开始第几节 len几节 name课名 tname老师名字 addr教室 mark备注
+  const {
+    height,
+    width,
+    week,
+    node,
+    len,
+    name,
+    tname,
+    addr,
+    mark,
+    pointColor,
+  } = props; //week星期几 node开始第几节 len几节 name课名 tname老师名字 addr教室 mark备注
   function handlePointOnClick() {}
   const Content = (
     <>
@@ -15,7 +26,13 @@ export default (props) => {
         <Divider style={{ margin: "0px" }} />
         <Text>
           星期{weekStr[week - 1]}{" "}
-          {node === 0 ? "早自习" : node < 5 ? "上午" : node < 9 ? "下午" : "晚自习"}{" "}
+          {node === 0
+            ? "早自习"
+            : node < 5
+            ? "上午"
+            : node < 9
+            ? "下午"
+            : "晚自习"}{" "}
           {node === 0 ? "" : `第${node % 4}节`}
         </Text>
         <Text>地点：{addr}</Text>
@@ -35,17 +52,17 @@ export default (props) => {
       <div
         className="lesson-p shadow-1-up"
         style={{
-          width: point.width - 4,
-          height: point.height * len - 4,
-          top: node * point.height,
-          left: (week - 1) * point.width,
+          height: height * len - 4,
+          top: node * height,
+          left: (week - 1) * width,
+          width: width - 2,
           background: `${pointColor}`,
         }}
         onClick={() => handlePointOnClick()}
       >
         <Paragraph
           ellipsis={{
-            rows: parseInt((point.height * len - 4) / 14),
+            rows: parseInt((height * len - 4) / 14),
             expandable: false,
             symbol: "...",
           }}

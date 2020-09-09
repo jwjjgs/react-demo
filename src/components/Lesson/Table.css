@@ -1,28 +1,23 @@
-.lesson {
-  position: absolute;
+.lesson .ant-col {
+  color: #000;
+  background-color: #fff;
 }
-.lesson-w div {
-  background-color: #eee;
-  float: left;
 
-  text-align: center;
+.lesson-w {
+  z-index: 2;
+  box-shadow: 0 3px 6px -4px rgba(0, 0, 0, 0.06),
+    0 6px 16px 0 rgba(0, 0, 0, 0.03), 0 9px 28px 8px rgba(0, 0, 0, 0.02);
 }
-.lesson-n div {
+.lesson-w .ant-col {
   background-color: #eee;
   text-align: center;
-  display: flex;
-  align-items: center;
+}
+
+.lesson-n .ant-col {
+  z-index: 2;
+  text-align: center;
+  background-color: #eee;
   border-top: 2px solid #fff;
+  box-shadow: 0 3px 6px -4px rgba(0, 0, 0, 0.06),
+    0 6px 16px 0 rgba(0, 0, 0, 0.03), 0 9px 28px 8px rgba(0, 0, 0, 0.02);
 }
-.lesson-n span {
-  display: block;
-  width: 100%;
-  text-align: center;
-}
-
-.lesson-c span {
-  display: block;
-  width: 100%;
-  text-align: center;
-}
-

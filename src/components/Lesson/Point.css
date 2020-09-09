@@ -4,7 +4,8 @@
   margin: 2px;
   border-radius: 8px;
   font-size: 12px;
-  box-shadow: 0 3px 6px -4px rgba(0, 0, 0, 0.12), 0 6px 16px 0 rgba(0, 0, 0, 0.08), 0 9px 28px 8px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 3px 6px -4px rgba(0, 0, 0, 0.12),
+    0 6px 16px 0 rgba(0, 0, 0, 0.08), 0 9px 28px 8px rgba(0, 0, 0, 0.05);
 }
 
 .ant-typography {
@@ -12,7 +13,6 @@
   line-height: 14px;
 }
 
-.ant-tooltip{
-  color: #fff;
+.ant-tooltip {
   line-height: 14px;
 }
