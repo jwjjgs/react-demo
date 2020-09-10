@@ -1,9 +1,19 @@
 import React, { useState, useEffect } from "react";
 import moment from "moment";
-import { Card, Statistic, Divider } from "antd";
-import { weekStr } from '../../config'
+import { Card, Statistic, Divider, Typography, Collapse } from "antd";
+import { weekStr } from "../../config";
 export default () => {
   const [nowMoment, setMoment] = useState(getMomet());
+
+  const weekNow =
+    parseInt(
+      (Date.now() - Date.parse(new Date("2020/09/07 00:00:00"))) /
+        1000 /
+        60 /
+        60 /
+        24 /
+        7
+    ) + 1;
   useEffect(() => {
     const timer = setInterval(() => setMoment((nowMoment) => getMomet()), 1000);
     return () => clearInterval(timer);
@@ -25,13 +35,21 @@ export default () => {
 
   return (
     <>
-      <Card>
-        <Statistic title={`星期${weekStr[moment().weekday()]}`} value={""} />
-        <Divider orientation="left" plain>
-          陪你走过漫长岁月
-        </Divider>
-        <LoveTimer />
-      </Card>
+      <Collapse bordered={false} ghost={true}>
+        <Collapse.Panel
+          header={
+            <Typography.Title level={3}>
+              {`第${weekNow}周`}
+              {"   "}
+              {`星期${weekStr[moment().weekday()]}`}
+            </Typography.Title>
+          }
+          key="1"
+          showArrow={false}
+        >
+          <LoveTimer />
+        </Collapse.Panel>
+      </Collapse>
     </>
   );
 };

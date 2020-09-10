@@ -5,7 +5,7 @@ export default (props) => {
   return (
     <Layout.Content
       style={{
-        margin: "0px 12px",
+        margin: "0px 16px",
         padding: 0,
       }}
     >

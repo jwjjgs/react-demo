@@ -1,12 +1,20 @@
 import React, { useState, useEffect } from "react";
 
-import { Collapse, Typography, Row, Col, Spin, Tag, } from "antd";
+import {
+  Collapse,
+  Typography,
+  Row,
+  Col,
+  Spin,
+  Tag,
+  Image,
+  Divider,
+} from "antd";
 import jsonp from "jsonp";
-import Weather from "./Icon";
-import Icon from "@ant-design/icons";
-import moment from 'moment'
-import { weekStr } from '../../config'
+import moment from "moment";
+import { weekStr } from "../../config";
 
+import SkyIcon from "./SkyIcon";
 
 export default () => {
   const [weather, setWeather] = useState(null);
@@ -28,22 +36,30 @@ export default () => {
           const tempMax = daily.temperature[0].max;
           const tempMin = daily.temperature[0].min;
           const tempAvg = daily.temperature[0].avg;
-          const status = getSkyCons(realtime.skycon);
+          const skyCon = realtime.skycon;
+          const skyDesc = getSkyDesc(skyCon);
+          const skyPrec = daily.precipitation[0].avg;
           const tip = { forecast_keypoint, description: hourly.description };
           const dailyData = [];
           for (let i = 0; i < 5; i++) {
             dailyData.push({
-              datetime: `周${weekStr[moment(daily.temperature[i].date).weekday()]}`,
-              value: `${parseInt(daily.temperature[i].min)}°/${parseInt(daily.temperature[i].max)}`,
+              datetime: `周${
+                weekStr[moment(daily.temperature[i].date).weekday()]
+              }`,
+              value: `${parseInt(daily.temperature[i].min)}°/${parseInt(
+                daily.temperature[i].max
+              )}`,
               icon: daily.skycon[i].value,
+              prec: daily.precipitation[i].avg,
             });
           }
           const hourlyData = [];
           for (let i = 0; i < hourlySteps; i++) {
             hourlyData.push({
-              datetime: moment(hourly.temperature[i].datetime).format("HH:mm"),
+              date: moment(hourly.temperature[i].datetime).format("HH:mm"),
               value: `${parseInt(hourly.temperature[i].value)}°`,
               icon: hourly.skycon[i].value,
+              prec: hourly.precipitation[i].value,
             });
           }
           setWeather({
@@ -51,7 +67,9 @@ export default () => {
             tempMax,
             tempMin,
             tempAvg,
-            status,
+            skyCon,
+            skyDesc,
+            skyPrec,
             tip,
             dailyData,
             hourlyData,
@@ -71,7 +89,7 @@ export default () => {
               <Col>
                 <Typography.Title level={2}>
                   {weather && weather.temp}°
-                  <Icon component={weather.status.icon} />
+                  <SkyIcon desc={weather.skyCon} />
                 </Typography.Title>
               </Col>
             </Row>
@@ -79,7 +97,15 @@ export default () => {
           <Col span={16}>
             <Row justify="end">
               <Col>
-                <Typography.Title level={5}>{weather.tempMin}°~{weather.tempMax}°<Icon component={Weather.TEMPERATURE} /></Typography.Title>
+                <Tag color="#108ee9">
+                  <Image
+                    preview={false}
+                    src="//caiyunapp.com/weather/img/tel-icon.png"
+                    width={8}
+                  />
+                  <Divider type="vertical" />
+                  {weather.tempMin}°~{weather.tempMax}°
+                </Tag>
               </Col>
             </Row>
           </Col>
@@ -87,7 +113,7 @@ export default () => {
         <Row>
           <Col span={8}>
             <Row justify="start">
-              <Col>{weather.status.text}</Col>
+              <Col>{weather.skyDesc}</Col>
             </Row>
           </Col>
           <Col span={16}>
@@ -104,70 +130,70 @@ export default () => {
     if (!props) return <Spin />;
     const { dataSource } = props;
     return (
-      <div style={{ whiteSpace: "nowrap", overflowX: "auto", marginTop: "16px" }}>
-
+      <div
+        style={{ whiteSpace: "nowrap", overflowX: "auto", marginTop: "16px" }}
+      >
         {dataSource.map((item, key) => {
-          const props = {
-            date: item.datetime,
-            icon: item.icon,
-            temp: item.value
-          }
-
-          return (
-            <InfoListItem key={key} {...props} />
-          )
+          return <InfoListItem key={key} {...item} />;
         })}
       </div>
-    )
+    );
   }
 
   function InfoListItem(props) {
     return (
-      <div style={{ listStyle: "none", display: "inline-block", width: 60, height: 80, textAlign: "center" }}>
+      <div
+        style={{
+          listStyle: "none",
+          display: "inline-block",
+          width: 60,
+          height: 80,
+          textAlign: "center",
+        }}
+      >
         <Row>
-          <Col span={24}><Typography.Text style={{ color: "#000" }}>{props.date}</Typography.Text></Col>
-          <Col span={24}><Icon component={getSkyCons(props.icon).icon} /></Col>
-          <Col span={24}><Typography.Text style={{ color: "#000" }}>{props.temp}</Typography.Text></Col>
+          <Col span={24}>
+            <Typography.Text style={{ color: "#000" }}>
+              {props.datetime}
+            </Typography.Text>
+          </Col>
+          <Col span={24}>
+            <SkyIcon desc={props.icon} prec={props.prec} />
+          </Col>
+          <Col span={24}>
+            <Typography.Text style={{ color: "#000" }}>
+              {props.value}
+            </Typography.Text>
+          </Col>
         </Row>
       </div>
-    )
+    );
   }
 
-  function getSkyCons(status) {
-    switch (status) {
-      case "CLEAR_DAY":
-        return { text: "晴", icon: Weather.CLEAR_DAY };
-      case "CLEAR_NIGHT":
-        return { text: "晴", icon: Weather.CLEAR_NIGHT };
-      case "PARTLY_CLOUDY_DAY":
-        return { text: "日间局部多云", icon: Weather.PARTLY_CLOUDY_DAY };
-      case "PARTLY_CLOUDY_NIGHT":
-        return { text: "夜间局部多云", icon: Weather.PARTLY_CLOUDY_NIGHT };
-      case "CLOUDY":
-        return { text: "多云", icon: Weather.CLOUDY };
-      case "RAIN":
-        return { text: "雨", icon: Weather.RAIN };
-      case "LIGHT_RAIN":
-        return { text: "小雨", icon: Weather.LIGHT_RAIN };
-      case "SLEET":
-        return { text: "雨夹雪", icon: Weather.SLEET };
-      case "SNOW":
-        return { text: "雪", icon: Weather.SNOW };
-      case "WIND":
-        return { text: "风", icon: Weather.WIND };
-      case "FOG":
-        return { text: "雾", icon: Weather.FOG };
-
-      default:
-        return "未知";
-    }
+  function getSkyDesc(desc) {
+    return {
+      CLEAR_DAY: "晴",
+      CLEAR_NIGHT: "晴",
+      PARTLY_CLOUDY_DAY: "多云",
+      PARTLY_CLOUDY_NIGHT: "多云",
+      CLOUDY: "阴",
+      CLOUDY_NIGHT: "阴",
+      RAIN: "雨",
+      SNOW: "雪",
+      SNOW_NIGHT: "雪",
+      WIND: "大风",
+      FOG: "雾",
+      HAZE: "雾霾",
+    }[desc];
   }
 
   return (
     <>
       <Collapse bordered={false} ghost={true}>
         <Collapse.Panel header={<Header />} key="1" showArrow={false}>
-          <div style={{ textAlign: "center" }}><Tag color="#108ee9">{weather && weather.tip.description}</Tag></div>
+          <div style={{ textAlign: "center" }}>
+            <Tag color="#108ee9">{weather && weather.tip.description}</Tag>
+          </div>
           <InfoList dataSource={weather && weather.hourlyData} />
           <InfoList dataSource={weather && weather.dailyData} />
         </Collapse.Panel>

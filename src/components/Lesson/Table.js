@@ -17,7 +17,7 @@ export default () => {
   const { innerHeight, innerWidth } = window;
   const base = 32;
   const height = (innerHeight - base) / 12;
-  const width = (innerWidth - 24 - base) / 7;
+  const width = (innerWidth - 32 - base) / 7;
   return (
     <>
       <Layout className="lesson">
@@ -64,8 +64,8 @@ export default () => {
                       key={key}
                       span={24}
                       style={{
-                        height: height * item.len,
-                        lineHeight: `${height * item.len}px`,
+                        height: height * item.len - 2,
+                        lineHeight: `${height * item.len - 2}px`,
                       }}
                     >
                       {item.text}

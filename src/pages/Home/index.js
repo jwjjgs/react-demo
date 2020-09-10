@@ -1,5 +1,5 @@
 import React from "react";
-import { Layout } from "antd";
+import { Layout, Image, Divider } from "antd";
 import Weather from "../../components/Weather";
 import Header from "../../components/common/Header";
 import Content from "../../components/common/Content";
@@ -8,14 +8,19 @@ import Table from "../../components/Lesson/Table";
 
 export default () => {
   return (
-    <Layout style={{ background: "#fff" }}>
-      <Header title="首页" isIndex={true}>
-        <Weather />
-      </Header>
+    <Layout>
+      <Header isIndex={true}></Header>
+      <Timer />
       <Content>
-        <Timer />
+        <Weather />
         <Table />
       </Content>
+
+      <Layout.Footer>
+        <Divider orientation="center" plain>
+          你是一只飞鸟 飞上我的树梢
+        </Divider>
+      </Layout.Footer>
     </Layout>
   );
 };

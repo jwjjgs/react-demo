@@ -52,7 +52,7 @@ export default (props) => {
       <div
         className="lesson-p shadow-1-up"
         style={{
-          height: height * len - 4,
+          height: height * len - 2,
           top: node * height,
           left: week * width,
           width: width - 2,
