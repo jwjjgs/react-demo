@@ -15,12 +15,15 @@ export default () => {
   //   setInnerWidth(window.innerWidth)
   // }
   const { innerHeight, innerWidth } = window;
+  const h = innerHeight > 840 ? 840 : innerHeight;
+  const w = innerWidth > 480 ? 480 : innerWidth;
+
   const base = 32;
-  const height = (innerHeight - base) / 12;
-  const width = (innerWidth - 32 - base) / 7;
+  const height = (h - base) / 12;
+  const width = (w - 32 - base) / 7;
   return (
     <>
-      <Layout className="lesson">
+      <Layout className="lesson" style={{ maxHeight: h, maxWidth: w }}>
         <Layout style={{ height: base }} className="lesson-w">
           <Row>
             <Col
