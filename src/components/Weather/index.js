@@ -190,7 +190,7 @@ export default () => {
   return (
     <>
       <Collapse bordered={false} ghost={true}>
-        <Collapse.Panel header={<Header />} key="1" showArrow={false}>
+        <Collapse.Panel header={<Header />} showArrow={false}>
           <div style={{ textAlign: "center" }}>
             <Tag color="#108ee9">{weather && weather.tip.description}</Tag>
           </div>

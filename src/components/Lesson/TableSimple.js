@@ -1,10 +1,14 @@
 import React from "react";
+import { data, pointColor } from "../../config/lesson";
+import { Typography } from "antd";
 
 export default (props) => {
-  const { lesson } = props;
-  if (!lesson) return <></>;
+  // const { lesson } = props;
+  // if (!lesson) return <></>;
+  const weekNow = new Date().getDay();
 
   function InfoListItem(props) {
+    const { name, addr } = props;
     return (
       <div
         style={{
@@ -15,42 +19,33 @@ export default (props) => {
           textAlign: "center",
         }}
       >
-        <Row>
-          <Col span={24}>
-            <Typography.Text style={{ color: "#000" }}>
-              {props.datetime}
-            </Typography.Text>
-          </Col>
-          <Col span={24}>
-            <SkyIcon desc={props.icon} prec={props.prec} />
-          </Col>
-          <Col span={24}>
-            <Typography.Text style={{ color: "#000" }}>
-              {props.value}
-            </Typography.Text>
-          </Col>
-        </Row>
+        <Typography.Paragraph
+          ellipsis={{
+            rows: 4,
+            expandable: false,
+            symbol: "...",
+          }}
+        >
+          {`${name}@${addr}`}
+        </Typography.Paragraph>
       </div>
     );
   }
 
   return (
-    <Row>
+    <div>
       {Object.keys(data).map((key, i) => {
         return data[key].map((item, k) => {
-          return (
-            <Col span={6} order={4}>
-              <Point
+          if (item.week === weekNow)
+            return (
+              <InfoListItem
                 {...item}
                 key={key + k}
-                height={height}
-                width={width}
                 pointColor={pointColor[i]}
               />
-            </Col>
-          );
+            );
         });
       })}
-    </Row>
+    </div>
   );
 };
