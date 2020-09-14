@@ -15,7 +15,7 @@ export default (props) => {
     HAZE: "haze.png",
     WIND: "wind.png",
   };
-
+  
   let name =
     allPicName[
       desc.match(

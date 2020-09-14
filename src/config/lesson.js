@@ -1,40 +1,162 @@
 const data = {
-  "常微分": [
-    { week: 1, node: 1, len: 2, name: "常微分", tname: "", addr: "303", mark: "", },
-    { week: 3, node: 7, len: 2, name: "常微分", tname: "", addr: "326", mark: "", },
+  常微分: [
+    {
+      week: 1,
+      node: 1,
+      len: 2,
+      name: "常微分",
+      tname: "老师姓名",
+      addr: "303",
+    },
+    {
+      week: 3,
+      node: 7,
+      len: 2,
+      name: "常微分",
+      tname: "老师姓名",
+      addr: "326",
+    },
   ],
-  "大学物理": [
-    { week: 1, node: 5, len: 2, name: "大学物理", tname: "", addr: "406", mark: "", },
+  物理: [
+    {
+      week: 1,
+      node: 5,
+      len: 2,
+      name: "大学物理",
+      tname: "老师姓名",
+      addr: "426",
+    },
+    {
+      week: 3,
+      node: 5,
+      len: 2,
+      name: "物理",
+      tname: "老师姓名",
+      addr: "426",
+    },
   ],
-  "数分": [
-    { week: 1, node: 7, len: 2, name: "数分", tname: "", addr: "507", mark: "" },
-    { week: 2, node: 1, len: 2, name: "数分", tname: "", addr: "405", mark: "" },
-    { week: 4, node: 1, len: 2, name: "数分", tname: "", addr: "515", mark: "" },
+  数分: [
+    {
+      week: 1,
+      node: 7,
+      len: 2,
+      name: "数分",
+      tname: "老师姓名",
+      addr: "507",
+    },
+    {
+      week: 2,
+      node: 1,
+      len: 2,
+      name: "数分",
+      tname: "老师姓名",
+      addr: "405",
+    },
+    {
+      week: 4,
+      node: 1,
+      len: 2,
+      name: "数分",
+      tname: "老师姓名",
+      addr: "515",
+    },
   ],
-  "近现代史": [
-    { week: 2, node: 5, len: 2, name: "近现代史", tname: "", addr: "511", mark: "", },
+  近现代史: [
+    {
+      week: 2,
+      node: 5,
+      len: 2,
+      name: "近现代史",
+      tname: "老师姓名",
+      addr: "511",
+    },
   ],
-  "乒乓球": [
-    { week: 2, node: 7, len: 2, name: "乒乓球", tname: "", addr: "南校乒羽馆", mark: "", },
+  乒乓球: [
+    {
+      week: 2,
+      node: 7,
+      len: 2,
+      name: "乒乓球",
+      tname: "老师姓名",
+      addr: "南校乒羽馆",
+    },
   ],
-  "物理": [
-    { week: 3, node: 5, len: 2, name: "物理", tname: "", addr: "426", mark: "" },
+  教育学: [
+    {
+      week: 3,
+      node: 9,
+      len: 3,
+      name: "教育学",
+      tname: "老师姓名",
+      addr: "307",
+    },
   ],
-  "教育学": [
-    { week: 3, node: 9, len: 3, name: "教育学", tname: "", addr: "307", mark: "", },
+  劳动教育: [
+    {
+      week: 4,
+      node: 5,
+      len: 4,
+      name: "劳动教育",
+      tname: "老师姓名",
+      addr: "201",
+    },
   ],
-  "劳动教育": [
-    { week: 4, node: 5, len: 4, name: "劳动教育", tname: "", addr: "201", mark: "", },
+  英语: [
+    {
+      week: 5,
+      node: 1,
+      len: 2,
+      name: "英语",
+      tname: "老师姓名",
+      addr: "218",
+    },
   ],
-  "英语": [
-    { week: 5, node: 1, len: 2, name: "英语", tname: "", addr: "218", mark: "" },
+  高考志愿: [
+    {
+      week: 5,
+      node: 7,
+      len: 2,
+      name: "高考志愿",
+      tname: "老师姓名",
+      addr: "106",
+    },
   ],
-  "高考志愿": [
-    { week: 5, node: 7, len: 2, name: "高考志愿", tname: "", addr: "106", mark: "", },
+  形策: [
+    {
+      week: 6,
+      node: 7,
+      len: 2,
+      name: "形策",
+      tname: "老师姓名",
+      addr: "211",
+    },
   ],
-  "形策": [
-    { week: 6, node: 7, len: 2, name: "形策", tname: "", addr: "211", mark: "" },
-  ],
-}
-const pointColor = ["#ff4d4f", "#ff7a45", "#ffa940", "#ffc53d", "#73d13d", "#36cfc9", "#40a9ff", "#597ef7", "#9254de", "#f759ab", "#000000"];
-export { data, pointColor }
+};
+const pointColor = [
+  "magenta",
+  "red",
+  "volcano",
+  "orange",
+  "gold",
+  "lime",
+  "green",
+  "cyan",
+  "blue",
+  "geekblue",
+  "purple",
+];
+const timeTable = [
+  { start: "07:30", end: "08:10" },
+  { start: "08:20", end: "09:00" },
+  { start: "09:10", end: "09:50" },
+  { start: "10:00", end: "10:40" },
+  { start: "10:50", end: "11:30" },
+  { start: "14:20", end: "15:00" },
+  { start: "15:10", end: "15:50" },
+  { start: "16:00", end: "16:40" },
+  { start: "16:50", end: "17:30" },
+  { start: "18:30", end: "19:10" },
+  { start: "19:20", end: "20:00" },
+  { start: "20:10", end: "20:50" },
+];
+export { data, pointColor, timeTable };

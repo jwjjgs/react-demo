@@ -1,26 +1,20 @@
 import React from "react";
-import { Layout, Image, Divider } from "antd";
+import { Divider } from "antd";
 import Weather from "../../components/Weather";
 import Header from "../../components/common/Header";
-import Content from "../../components/common/Content";
-import Timer from "../../components/Timer";
-import Table from "../../components/Lesson/Table";
+import Simple from "../../components/Lesson/Simple";
 
 export default () => {
   return (
-    <Layout>
-      <Header isIndex={true}></Header>
-      <Timer />
-      <Content>
+    <>
+      <Header title="^-^" isIndex={true}></Header>
+      <div style={{ margin: "0 24px" }}>
         <Weather />
-        <Table />
-      </Content>
-
-      <Layout.Footer>
+        <Simple />
         <Divider orientation="center" plain>
           你是一只飞鸟 飞上我的树梢
         </Divider>
-      </Layout.Footer>
-    </Layout>
+      </div>
+    </>
   );
 };

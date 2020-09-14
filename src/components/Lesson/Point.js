@@ -1,6 +1,6 @@
 import React from "react";
 import "./Point.css";
-import { Typography, Tooltip, Space, Divider } from "antd";
+import { Typography, Tooltip, Space, Divider, Tag } from "antd";
 import { weekStr } from "../../config";
 
 const { Paragraph, Text } = Typography;
@@ -21,7 +21,7 @@ export default (props) => {
   function handlePointOnClick() {}
   const Content = (
     <>
-      <Space direction="vertical">
+      <Space direction="vertical" style={{color:"#fff"}}>
         <Text strong={true}>{name}</Text>
         <Divider style={{ margin: "0px" }} />
         <Text>
@@ -52,12 +52,11 @@ export default (props) => {
       <div
         className="lesson-p shadow-1-up"
         style={{
-          height: height * len - 2,
           top: node * height,
           left: week * width,
-          width: width - 2,
-          background: `${pointColor}`,
+          position: "absolute",
         }}
+        color={pointColor}
         onClick={() => handlePointOnClick()}
       >
         <Paragraph
@@ -67,7 +66,17 @@ export default (props) => {
             symbol: "...",
           }}
         >
-          {`${name}@${addr}`}
+          <Tag
+            style={{
+              whiteSpace: "pre-wrap",
+              width: width - 2,
+              height: height * len - 2,
+            }}
+            color={pointColor}
+            onClick={() => handlePointOnClick()}
+          >
+            {name}@{addr}
+          </Tag>
         </Paragraph>
       </div>
     </Tooltip>

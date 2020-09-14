@@ -1,11 +1,9 @@
-import React, { useState } from "react";
+import React from "react";
 import "./Table.css";
 import Point from "./Point";
 import { data, pointColor } from "../../config/lesson";
 import { weekStr } from "../../config";
-import { Layout, Row, Col, Collapse, Tag } from "antd";
-import TableSimple from "./TableSimple";
-import { AppstoreOutlined } from "@ant-design/icons";
+import { Row, Col } from "antd";
 
 export default () => {
   // const { innerHeight, setInnerHeight } = useState(window.innerHeight);
@@ -27,8 +25,8 @@ export default () => {
   function Table() {
     return (
       <>
-        <Layout className="lesson" style={{ maxHeight: h, maxWidth: w }}>
-          <Layout style={{ height: base }} className="lesson-w">
+        <div className="lesson" style={{ maxHeight: h, maxWidth: w }}>
+          <div style={{ height: base }} className="lesson-w">
             <Row>
               <Col
                 flex={`${base}px`}
@@ -54,11 +52,11 @@ export default () => {
                 </Col>
               ))}
             </Row>
-          </Layout>
-          <Layout>
+          </div>
+          <div>
             <Row>
               <Col flex={`${base}px`}>
-                <Layout className="lesson-n">
+                <div className="lesson-n">
                   {/* 节点 */}
                   <Row>
                     {[
@@ -79,10 +77,10 @@ export default () => {
                       </Col>
                     ))}
                   </Row>
-                </Layout>
+                </div>
               </Col>
               <Col flex="auto">
-                <Layout className="lesson-c">
+                <div className="lesson-c">
                   {/* 课 */}
                   {Object.keys(data).map((key, i) => {
                     return data[key].map((item, k) => {
@@ -97,22 +95,14 @@ export default () => {
                       );
                     });
                   })}
-                </Layout>
+                </div>
               </Col>
             </Row>
-          </Layout>
-        </Layout>
+          </div>
+        </div>
       </>
     );
   }
 
-  return (
-    <Collapse bordered={false} ghost={true}>
-      <Collapse.Panel
-        header={<TableSimple />}
-        showArrow={false}
-        extra={<AppstoreOutlined />}
-      ></Collapse.Panel>
-    </Collapse>
-  );
+  return <Table />;
 };

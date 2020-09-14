@@ -8,7 +8,6 @@ export default (props) => {
   return (
     <>
       <PageHeader
-        className="site-page-header"
         backIcon={isIndex ? false : <ArrowLeftOutlined />}
         onBack={() => history.goBack()}
         title={title || ""}
