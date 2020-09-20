@@ -1,0 +1,35 @@
+.HotSearchItem {
+  display: -webkit-box;
+  -webkit-box-align: center;
+  color: #333;
+}
+.HotSearchItem strong {
+  display: block;
+  width: 15px;
+  text-align: center;
+  color: #f26d5f;
+  font-weight: bolder;
+  margin-right: 10px;
+  font-size: 13px;
+  font-style: italic;
+}
+.HotSearchItem span {
+  -webkit-box-flex: 1;
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  line-height: 120%;
+  margin: 0 10px;
+}
+.HotSearchItem span em {
+  color: #a9a9a9;
+  font-size: 12px;
+  margin-left: 10px;
+}
+.HotSearchItem i {
+  display: block;
+  width: 15px;
+  height: 15px;
+  background-size: 15px 15px;
+}

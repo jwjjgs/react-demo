@@ -1,10 +1,9 @@
-
-.ant-typography {
-  line-height: 14px;
-  color:"#fff";
+.lesson-p {
+  border-radius: 8px;
+  padding: 4px 2px;
+  position: absolute;
 }
-
-.ant-tooltip {
-
-  line-height: 14px;
+.lesson-p-node {
+  font-size: 12px;
+  line-height: 12px;
 }

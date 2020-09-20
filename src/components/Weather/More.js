@@ -12,6 +12,7 @@ export default (props) => {
   return (
     <List
       style={{ overflowX: "scroll", whiteSpace: "nowrap" }}
+      split={false}
       dataSource={list}
       renderItem={(item) => (
         <List.Item

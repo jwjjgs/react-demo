@@ -4,8 +4,9 @@ import Point from "./Point";
 import { data, pointColor } from "../../config/lesson";
 import { weekStr } from "../../config";
 import { Row, Col } from "antd";
+import moment from "moment";
 
-export default () => {
+export default (props) => {
   // const { innerHeight, setInnerHeight } = useState(window.innerHeight);
   // const { innerWidth, setInnerWidth } = useState(window.innerWidth);
 
@@ -14,13 +15,20 @@ export default () => {
   //   setInnerHeight(window.innerHeight)
   //   setInnerWidth(window.innerWidth)
   // }
+
+  const { margin } = props;
   const { innerHeight, innerWidth } = window;
   const h = innerHeight > 840 ? 840 : innerHeight;
   const w = innerWidth > 480 ? 480 : innerWidth;
-
+  const weekSelect = {
+    backgroundColor: "#096dd9",
+    color: "#fff",
+    borderRadius: "8px",
+  };
+  const week = moment().day();
   const base = 32;
   const height = (h - base) / 12;
-  const width = (w - 32 - base) / 7;
+  const width = (w - margin - base) / 7;
 
   function Table() {
     return (
@@ -48,7 +56,13 @@ export default () => {
                   }}
                 >
                   {/* 星期 */}
-                  {item}
+                  <div
+                    style={{
+                      ...(week === key ? weekSelect : {}),
+                    }}
+                  >
+                    {item}
+                  </div>
                 </Col>
               ))}
             </Row>

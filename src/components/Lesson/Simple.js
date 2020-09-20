@@ -54,6 +54,7 @@ export default () => {
     return (
       <List
         dataSource={list}
+        split={false}
         renderItem={(item) => (
           <List.Item>
             <SimpleItem {...item} />
@@ -133,20 +134,19 @@ export default () => {
           <div style={{ minHeight: 120, maxHeight: 300, overflowY: "scroll" }}>
             <Space direction="vertical">
               {Object.keys(list).map((item) => {
-                if (list[item].length > 0)
-                  return (
-                    <div key={item}>
-                      <Text type="secondary" style={style.title}>
-                        {item}
-                      </Text>
-                      <SimpleList list={list[item]} />
-                    </div>
-                  );
-                return <></>;
+                if (list[item].length === 0) return;
+                return (
+                  <div key={item}>
+                    <Text type="secondary" style={style.title}>
+                      {item}
+                    </Text>
+                    <SimpleList list={list[item]} />
+                  </div>
+                );
               })}
             </Space>
           </div>
-        </Card>{" "}
+        </Card>
       </Link>
     </>
   );

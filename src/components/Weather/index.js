@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Collapse, Skeleton, Divider } from "antd";
 import jsonp from "jsonp";
 import moment from "moment";
@@ -8,9 +8,7 @@ import More from "./More";
 
 export default () => {
   const [weather, setWeather] = useState(null);
-  useEffect(() => {
-    getWeather();
-  }, []);
+  useEffect(() => getWeather(), []);
   function getWeather() {
     const hourlySteps = 24;
     jsonp(
@@ -84,7 +82,9 @@ export default () => {
           showArrow={false}
         >
           <More list={weather.more.day} />
-          <Divider orientation="center" plain>{weather.tip}</Divider>
+          <Divider orientation="center" plain>
+            {weather.tip}
+          </Divider>
           <More list={weather.more.hour} />
         </Collapse.Panel>
       </Collapse>
