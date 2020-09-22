@@ -4,6 +4,7 @@ import Weather from "../../components/Weather";
 import Header from "../../components/common/Header";
 import Simple from "../../components/Lesson/Simple";
 import HotSearch from "../../components/HotSearch";
+import FateSimple from "../../components/Fate/FateSimple";
 
 export default () => {
   return (
@@ -12,6 +13,7 @@ export default () => {
       <div style={{ padding: "0 24px" }}>
         <Space direction="vertical" style={{ width: "100%" }}>
           <Weather />
+          <FateSimple />
           <Simple />
           <HotSearch />
           <Divider orientation="center" plain>
